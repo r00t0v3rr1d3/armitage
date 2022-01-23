@@ -1,4 +1,47 @@
 =============================================================================
+<Armitage - 01/23/2022>
+=============================================================================
+Thanks to redcanari for the fixes and updates - I forked from his work. 
+
+Instructions for Armitage on Kali 2021.4a with latest updates. Do everything below within a root prompt!:
+
+msfdb init
+
+edit /etc/postgresql/14/main/pg_hba.conf
+
+on the line 97 (IPV4 local connections)
+switch “scram-sha-256” to “trust”
+
+systemctl enable postgresql
+systemctl start postgresql
+
+apt install -y default-jdk 
+
+cd /opt
+
+git clone https://github.com/r00t0v3rr1d3/armitage.git
+
+cd armitage
+
+./package.sh
+
+cd release/unix
+
+./armitage
+
+username: msf
+password: msf
+
+Leave the rest. Do you want to start blah blah for you? Answer yes. 
+
+Observed broken functionality / issues:
+- Attacks - Find Attacks doesn't seem to work
+
+=============================================================================
+</Armitage - 01/23/2022>
+=============================================================================
+
+=============================================================================
 Armitage - Cyber Attack Management for Metasploit
 =============================================================================
    
