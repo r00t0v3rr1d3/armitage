@@ -1,21 +1,30 @@
 =============================================================================
-<Armitage - 01/23/2022>
+<Armitage - 12/05/2022>
 =============================================================================
 Thanks to redcanari for the fixes and updates - I forked from his work. 
 
-Instructions for Armitage on Kali 2021.4a with latest updates. Do everything below within a root prompt!:
+Instructions for Armitage on Kali 2022.3 with latest updates. Java 18 breaks EVERYTHING, so avoid for now. Do everything below within a root prompt!:
 
 msfdb init
 
-edit /etc/postgresql/14/main/pg_hba.conf
+edit /etc/postgresql/15/main/pg_hba.conf
 
 on the line 97 (IPV4 local connections)
 switch “scram-sha-256” to “trust”
 
 systemctl enable postgresql
+systemctl stop postgresql
 systemctl start postgresql
 
-apt install -y default-jdk 
+java -version
+
+if it says anything other than 11, lets go way back - because why not:
+
+apt update; apt install -y openjdk-11-jdk
+
+update-alternatives --config java
+
+choose the openjdk-11 as the default. then run java -version to make sure it is good to go.
 
 cd /opt
 
