@@ -19,7 +19,7 @@ jar {
     from {
         configurations.compileClasspath.filter { it.exists() }.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    archiveName 'armitage.jar'
+    archiveFileName.set 'armitage.jar'
 }
 
 dependencies {
