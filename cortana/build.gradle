@@ -19,7 +19,8 @@ jar {
     from {
         configurations.compileClasspath.filter { it.exists() }.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    archiveName 'cortana.jar'
+    duplicatesStrategy DuplicatesStrategy.INCLUDE
+    archiveFileName.set 'cortana.jar'
 }
 
 dependencies {
